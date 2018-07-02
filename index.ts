@@ -1,14 +1,17 @@
 import * as tf from '@tensorflow/tfjs';
 
-const model = tf.sequential();
-model.add(tf.layers.dense({units: 1, inputShape: [1]}));
+const shape = [2, 3];
+const a = tf.tensor([1.0, 2.0, 3.0, 10.0, 20.0, 30.0], shape);
+a.print();
 
-model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+const b = tf.tensor([[1.0, 2.0, 3.0], [10.0, 20.0, 30.0]]);
+b.print();
 
-const xs = tf.tensor2d([1, 2, 3, 4], [4, 1]);
-const ys = tf.tensor2d([1, 3, 5, 7], [4, 1]);
+const c = tf.tensor2d([
+    [1.0, 2.0, 3.0],
+    [10.0, 20.0, 30.0]
+]);
+c.print();
 
-model.fit(xs, ys, {epochs: 10}).then(() => {
-    const result = model.predict(tf.tensor2d([5], [1, 1]));
-    console.log(result);
-});
+const zeros = tf.zeros([3, 5]);
+zeros.print();
